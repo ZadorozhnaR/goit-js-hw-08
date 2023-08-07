@@ -13,9 +13,13 @@ form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
-  console.log({ email: email.value, message: message.value });
-  localStorage.removeItem(localKey);
-  e.currentTarget.reset();
+  if (email.value === '' || message.value === '') {
+    return alert('Всі поля повинні бути заповнені!');
+  } else {
+    console.log({ email: email.value, message: message.value });
+    localStorage.removeItem(localKey);
+    e.currentTarget.reset();
+  }
 }
 
 function saveText(e) {

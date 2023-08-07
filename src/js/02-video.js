@@ -17,19 +17,4 @@ player.on(
 
 const sec = JSON.parse(localStorage.getItem(local_key));
 
-player
-  .setCurrentTime(sec)
-  .then(function (secondsSave) {
-    secondsSave = sec;
-  })
-  .catch(function (error) {
-    switch (error.name) {
-      case 'RangeError':
-        secondsSave = 0;
-        break;
-
-      default:
-        secondsSave = 0;
-        break;
-    }
-  });
+player.setCurrentTime(sec || 0);
